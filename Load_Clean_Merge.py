@@ -88,6 +88,27 @@ dfP.reset_index(inplace = True)
 #rename columns for readability
 dfP.rename(columns= {'Other':'other_votes','democrat':'democrat_votes','republican':'republican_votes'}, inplace=True)
 
+######################
+# NEW COLUMNS added by Jonathan April 17
+######################
+# republican (ie, Trump) percentage of total votes
+dfP['republican_pct'] = round(dfP['republican_votes'] / dfP['totalvotes'],4)
+
+# Trump percentage of Trump + Clinton total votes
+#dfP['TvC'] = round(dfP['republican_votes'] / 
+#                   (dfP['republican_votes'] + dfP['democrat_votes']),
+#                   4)
+
+# Column to show "color" of voters -- red, blue, or purple
+# Based on arbitrary definition of 47.5% to 52.5% of Trump Voters
+# in 2016 election = Purple
+dfP['vote_color'] = pd.cut(dfP.republican_pct,bins=[0,0.475,0.525,1],
+                   labels=['blue','purple','red'])
+#######################
+# END OF NEW COLUMNS
+######################
+
+
 # Set index to the geographic ID by which we'll merge dataframes
 dfP.set_index('FIPS', inplace=True)
 
