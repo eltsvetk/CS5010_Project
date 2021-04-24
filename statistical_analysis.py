@@ -15,7 +15,7 @@ from statsmodels.graphics.gofplots import ProbPlot
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
-df = pd.read_csv("C:/Users/elena/OneDrive/Documents/CS5010/CS5010_Project/merged.csv", index_col=0)
+df = pd.read_csv("merged.csv", index_col=0)
 
 #Data Exploration
 
