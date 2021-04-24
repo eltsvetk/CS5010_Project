@@ -40,6 +40,8 @@ df['Political_Affiliation'] = np.where(
 
 df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
 
+df.to_csv("merged_columns_added_renamed.csv")
+
 sns.set(style="darkgrid")
 
 gfg = sns.scatterplot(x='happening', y='priority', data=df, hue='Political_Affiliation', palette=['red','blue','green'],
