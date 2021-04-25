@@ -17,6 +17,7 @@ We also added election return data from the 2016 presidential race between Donal
 
 # ANALYSIS
 *Elena:* will say great stuff here
+![Image of first scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/scatterplot_CC_Political_Affiliation.png)
 
 # TESTING (60 words)
 
