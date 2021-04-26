@@ -13,7 +13,9 @@ We also added election return data from the 2016 presidential race between Donal
 *Jonathan:* Before we could do any analysis, we had to merge the data at the county level. You’d think that would be easy, right? There used to be a standard code for counties called a FIPS code, but in 2008 the commerce department replaced with another standard called INCITS, and our sources were inconsistent. It’s not practical to manually check that 3000 counties match correctly.   So we wrote python functions that translate each coding standard into the one we used, then used that as an index to combine datasets.
 
 # MAP
-An interactive map allows those curious about climate change to compare the attitudes of Americans across the country, in a single visualization.
+## SLIDE: Picture of the map
+
+*Anita:* An interactive map allows those curious about climate change to compare the attitudes of Americans across the country, in a single visualization.
 
 It is available at https://climate-population.herokuapp.com/
 
