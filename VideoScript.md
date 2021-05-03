@@ -60,8 +60,12 @@ The selectable data points to _6 items_, in order to reduce the initial map load
 # TESTING 
 *Jonathan:* Most of our code for the project is in three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. Most of our testing was whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
 
-# CONCLUSION (100 words)
+# CONCLUSION 
 *Jonathan:* In conclusion, look at the biggest circles in this graphic.  Those are the counties with the highest population densities in the country.  It's commonly known that big cities vote Democratic, but this graph shows that big-city residents are also more worried about climate change than residents of typical counties who agree that climate change is happening.
  
 This is an important observation, because all over the world, people are migrating towards cities, and when you live in a city, it's harder to stay in touch with the natural environment. It's possible that might mean people in cities will forget what they left behind.  It would take future work  to fully explore that hypothesis, but luckily this graph suggests it may actually be the opposite: it seems people in the city care *more* about protecting the environment than people in the countryside. We live in a democracy where more are more people are living in cities. So having city dwellers want to protect the environment will increase the odds that the US takes action to address climate change.
+
+EDITS STILL NEEDED: we believe the implementation of an interactive dashboard as well as advance statistical queries that involved transforming response variables are worthy of extra credit"
+...and for swing county web scraping
+
 
