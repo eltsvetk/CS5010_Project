@@ -270,15 +270,6 @@ def label_party_color(row):
 df['Political_Affiliation'] = df.apply(lambda 
                                        row: label_party_color(row),
                                        axis = 1)
-# Elena's original code:
-'''
-df['Abs_Difference'] = df['%Democrat'] - df['%Republican']
-df['Abs_Difference'] = df['Abs_Difference'].abs()
-
-df['Political_Affiliation'] = np.where(
-    df['Abs_Difference'] < 2, 'Swing', np.where(
-    df['%Democrat'] >  df['%Republican'], 'Demo', 'Repub')) 
-'''
 
 df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
 
