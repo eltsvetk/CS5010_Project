@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Elena Tsvetkova
+Statistical Analysis 
 
 """
 
@@ -47,7 +47,7 @@ plt.xlabel("% who think GW is happening")
 plt.ylabel("%who priortize candidates views on GW")
 plt.title("%Who think GW is happening vs those who care")
 plt.tight_layout()
-plt.savefig('scatterplot.png', dpi=300)
+plt.savefig('scatterplot_CC_Political_Affiliation.png', dpi=300)
 plt.show()
 
 #There appears to be a linear relationship between the % of those who believe GW is happening
@@ -319,7 +319,7 @@ plt.xlabel("% who think GW is happening")
 plt.ylabel("%who are worried")
 plt.title("%Who think GW is happening vs those who are worried")
 plt.tight_layout()
-plt.savefig('scatterplot.png', dpi=300)
+plt.savefig('scatterplot_CC_PopDensity.png', dpi=300)
 plt.show()
 
 #There appears to be a linear relationship between the % of those who believe GW is happening
