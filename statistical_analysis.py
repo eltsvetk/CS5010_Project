@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy import stats
+#from scipy import stats
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from statsmodels.graphics.gofplots import ProbPlot
@@ -32,23 +32,6 @@ df = pd.read_csv(input_file, index_col=0)
 
 #comparing % who think global warming is happening vs
 #% who say a candidate's views on global warming are important to their vote
-
-# The following code was moved to the load/clean/merge script
-'''
-#adding column
-df['%Democrat'] = (df['democrat_votes'] / df['totalvotes']) * 100
-df['%Republican'] = (df['republican_votes'] / df['totalvotes']) * 100
-df['Abs_Difference'] = df['%Democrat'] - df['%Republican']
-df['Abs_Difference'] = df['Abs_Difference'].abs()
-
-df['Political_Affiliation'] = np.where(
-    df['Abs_Difference'] < 2, 'Swing', np.where(
-    df['%Democrat'] >  df['%Republican'], 'Demo', 'Repub')) 
-
-df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
-
-df.to_csv("merged_columns_added_renamed.csv")
-'''
 
 sns.set(style="darkgrid")
 
@@ -256,8 +239,6 @@ plt.savefig('Cooksdistance_afterTrans.png', dpi=300)
 
 #We will continue with our transformed model!
 
-
-
 trans_model.summary()
 
 #Question:
@@ -296,12 +277,20 @@ trans_model_cat.summary()
 
 #Democratic votes from 2016 election is the reference class
 
-#the coefficient is Repub indicator variable is -.0387
-#(exp(-.0387) – 1) * 100 = -3.796
+#the coefficient for the Repub indicator variable is -.0342
+#(exp(-.0342) – 1) * 100 = -3.36
 
 #The % of those who prioritize candidate's views on GW
-#decreases on average by about 3.8% per change in the % of those
+#decreases on average by about 3.4% per change in the % of those
 #who think GW is happening if they voted Republican in 2016
+#election relative to if they voted Democrat
+
+#the coefficient for the Swing indicator variable is -.0424
+#(exp(-.0424) - 1) * 100 = -4.15
+
+#The % of those who prioritize candidate's views on GW
+#decreases on average by about 4% per change in the % of those
+#who think GW is happening if they voted Swing in 2016
 #election relative to if they voted Democrat
 
 #How does population density relate to climate change?
