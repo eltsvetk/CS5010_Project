@@ -61,9 +61,7 @@ Notice how there is a linear relationship between those who believe GW is happen
 In any case, we ended up doing something like whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
 
 # CONCLUSION (100 words)
-*Jonathan:* Our hypothesis was that climate-change-related attitudes in dense cities will be significantly different than those in rural areas. 
-This is an important question because humans are migrating towards cities, and if people in cities “lose touch” with the importance of protecting the environment, that could impact the political will to protect the environmental, especially in a democracy.
-This would be a place for 
-> Inspirational Quote
-> That leaves people with
-> Tears in their eyes
+*Jonathan:* In conclusion, look at the biggest circles in this graphic.  Those are the counties with the highest population densities in the country.  It's commonly known that big cities vote Democratic, but this graph shows that big-city residents are also more worried about climate change than residents of typical counties who agree that climate change is happening.
+ 
+This is an important observation, because all over the world, people are migrating towards cities, and when you live in a city, it's harder to stay in touch with the natural environment. It's possible that might mean people in cities will forget what they left behind.  We didn't have time or resources to fully explore that hypothesis, but the good news is that this graph suggests it may actually be the opposite: it seems people in the city care *more* about protecting the environment. In the democracy we live in, that could help build the political will to protect the environment and take action on climate change.
+
