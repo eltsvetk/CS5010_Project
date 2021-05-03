@@ -47,7 +47,7 @@ Notice these boxplots. You can see that the average % of those who think GW is h
 
 ![Image of second boxplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/boxplot2.png)
 
-But we wanted to dive deeper. We wanted to understand the relationship between these variables. So, I utilized the statsmodels library in python. I fit a model where 87% of the variability in those who prioritize candidate’s views on GW was captured. I did have to log transform the response to ensure the assumptions for a multiple regression model were met. In the end, I found that those who prioritize candidate’s views on GW decreases on average by about 3.8% per change in those who think GW is happening if they voted Republican in the 2016 election instead of voting Democrat. 
+But we wanted to dive deeper. We wanted to understand the relationship between these variables. So, I utilized the statsmodels library in python. I fit a model where 87% of the variability in those who prioritize candidate’s views on GW was captured. I did have to log transform the response to ensure the assumptions for a multiple regression model were met. In the end, I found that those who prioritize candidate’s views on GW decreases on average by about 3.4% per change in those who think GW is happening if they voted Republican in the 2016 election instead of voting Democrat. 
 
 Our second question was: Are the people who think GW is happening actually worried about it and how does this relate to population density?
 
