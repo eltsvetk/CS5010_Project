@@ -1,16 +1,16 @@
 # Intro and Data:
 ## (SLIDE: Title and pictures of the 3 of us)
-*Jonathan:* Hello, our group set out to look at Americans’ attitudes toward Climate Change – specifically, whether those attitudes correlate with Population Density.  Our group members are Elena Tsvetkova, Anita Taucher, and I’m Jonathan Shakes.
+*Jonathan:* Hello, our group looks at Americans’ attitudes toward Climate Change – specifically, whether those attitudes correlate with Population Density.  Our group members are Elena Tsvetkova, Anita Taucher, and I’m Jonathan Shakes.
 
 ## SLIDE: YALE WEBSITE
-*Jonathan:* Some of our data comes from the Yale Program on Climate Change Communications. They ask survey questions like, “Do you think climate change is happening,” or “Do you think your state governor should be doing more about climate change?” 
+*Jonathan:* Some of our data comes from the Yale Program on Climate Change Communications. The Yale program does surveys with questions like, “Do you think climate change is happening,” or “Do you think your state's governor should do more about climate change?” 
 
 On top of the Yale data, we add census data about population density, to see if that’s a predictor of people’s climate change attitudes.
 
-We also added election return data from the 2016 presidential race between Donald Trump and Hillary Clinton. I guess the Yale program folks want to downplay the politics, because they don’t publish their data with a political overlay. Their FAQ did say population density would be an interesting angle they had not followed.
+We also add election return data from the 2016 presidential race between Donald Trump and Hillary Clinton. I think the Yale program folks want to downplay the politics, because they don’t integrate political data with their climate survey data, even though they are closely linked. 
 
 ## SLIDE: Side-by-side rows from two different data sets
-*Jonathan:* Before we could do any analysis, we had to merge the data at the county level. You’d think that would be easy, right? There used to be a standard code for counties called a FIPS code, but in 2008 the commerce department replaced with another standard called INCITS, and our sources were inconsistent. It’s not practical to manually check that 3000 counties match correctly.   So we wrote python functions that translate each coding standard into the one we used, then used that as an index to combine datasets.
+*Jonathan:* Before doing analysis, we merge the data at the county level. That should be easy, and there used to be a standard ID for counties called a FIPS code, but in 2008 the commerce department replaced that with another standard called INCITS, so our sources were inconsistent. It’s not practical to manually match 3000 counties, do we wrote python functions to translate between coding standardd, then used one version as an index to combine datasets.
 
 # MAP
 ## SLIDE: Picture of the map
@@ -55,7 +55,10 @@ Notice how there is a linear relationship between those who believe GW is happen
 
 ![Image of second scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/scatterplot_CC_PopDensity.png)
 
-# TESTING (60 words)
+# TESTING 
+*Jonathan:* We had every intention to practice what we learned in class about unit testing, but that didn't work out, maybe because our data pipeline was a series of three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. The scripts are short, and honestly I think finding ways to make them shorter by using more library functions seems like it will have a bigger impact on quality, as compared to spending the same time to test our own complicated code. 
+
+In any case, we ended up doing something like whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
 
 # CONCLUSION (100 words)
 *Jonathan:* Our hypothesis was that climate-change-related attitudes in dense cities will be significantly different than those in rural areas. 
