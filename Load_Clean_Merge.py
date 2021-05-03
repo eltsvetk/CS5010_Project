@@ -19,6 +19,13 @@ population_filename = longpath + "co-est2019-alldata.csv" # US Census Population
 LND_filename = longpath + "LND01.xls"  # Land area by county
 YCOM_filename = longpath + "YCOM_2020_Data.csv"   # Yale university polling data
 
+# 206 Swing Counties scraped from:
+# https://ballotpedia.org/List_of_Pivot_Counties_-_the_206_counties_that_voted_Obama-Obama-Trump
+# They voted for Obama both times, then for Trump in 2016
+Swing_county_filename = longpath + "SwingCounties.csv"   
+
+
+
 output_csv_filename = longpath + "merged.csv"
 
 # Routines to process the key geographic ID we'll use
@@ -88,29 +95,38 @@ dfP.reset_index(inplace = True)
 #rename columns for readability
 dfP.rename(columns= {'Other':'other_votes','democrat':'democrat_votes','republican':'republican_votes'}, inplace=True)
 
-######################
-# NEW COLUMNS added by Jonathan April 17
-######################
 # republican (ie, Trump) percentage of total votes
 dfP['republican_pct'] = round(dfP['republican_votes'] / dfP['totalvotes'],4)
 
-# Trump percentage of Trump + Clinton total votes
-#dfP['TvC'] = round(dfP['republican_votes'] / 
-#                   (dfP['republican_votes'] + dfP['democrat_votes']),
-#                   4)
-
+# NO LONGER USED
 # Column to show "color" of voters -- red, blue, or purple
 # Based on arbitrary definition of 47.5% to 52.5% of Trump Voters
 # in 2016 election = Purple
-dfP['vote_color'] = pd.cut(dfP.republican_pct,bins=[0,0.475,0.525,1],
-                   labels=['blue','purple','red'])
-#######################
-# END OF NEW COLUMNS
-######################
+#dfP['vote_color'] = pd.cut(dfP.republican_pct,bins=[0,0.475,0.525,1],
+#                   labels=['blue','purple','red'])
 
+
+#######################
+# Swing County datasource 
+#######################
+dfSwing =  pd.read_csv(Swing_county_filename)
+dfSwing['Swing'] = True
+
+# Ensure format of FIPS (geographic identifier)
+# matches the desired 5-character string format
+dfSwing['FIPS'] = dfSwing.apply(lambda x: padID(x['FIPS']), axis = 1)
+
+#Remove unneeded columns
+del dfSwing['County']
+del dfSwing['State']
+del dfSwing['Full Name']
+
+# Add Swing data into dfP
+dfP = dfP.join(dfSwing.set_index('FIPS'), on='FIPS')
 
 # Set index to the geographic ID by which we'll merge dataframes
 dfP.set_index('FIPS', inplace=True)
+
 
 #######################
 # Land-area datasource
@@ -219,8 +235,61 @@ df = df[~df['GeoType'].isnull()]
 # Calculate value for population density
 df['PopDensity'] = df['POP'] / df['LND010200D']
 
+# Calculate scaled population density (40 to 80) for 
+# ease of display in Heroku
+# Scaling Formula:
+# log(PopDensity) * ScalingFactor + ScaleMin
+# ScaleMin is set to 40 so that color display in Heroku
+# will work well for both Pop Density (within 40-90 range)
+# and for polling results (which also fall in the 40-90 range)
+ScaleMax = 90
+ScaleMin = 40
+ScaleRange = ScaleMax - ScaleMin
+PopMax = df['PopDensity'].max()
+ScalingFactor = ScaleRange / np.log(PopMax)
+LogPad = 3 # add this constant to Pop Density
+            # To avoid log of PopDensity from going below zero
+
+df['ScaledPopDensity'] = (np.log(df['PopDensity']+LogPad) * 
+                          ScalingFactor +
+                          ScaleMin)
+
+###################################
+# Add Columns for Stats and Plotting Convenience
+###################################
+df['%Democrat'] = (df['democrat_votes'] / df['totalvotes']) * 100
+df['%Republican'] = (df['republican_votes'] / df['totalvotes']) * 100
+
+def label_party_color(row):
+    if row['Swing'] == True:
+        return 'Swing'
+    if (row['%Democrat'] > row['%Republican']) :
+        return 'Demo'
+    return 'Repub'
+
+df['Political_Affiliation'] = df.apply(lambda 
+                                       row: label_party_color(row),
+                                       axis = 1)
+# Elena's original code:
+'''
+df['Abs_Difference'] = df['%Democrat'] - df['%Republican']
+df['Abs_Difference'] = df['Abs_Difference'].abs()
+
+df['Political_Affiliation'] = np.where(
+    df['Abs_Difference'] < 2, 'Swing', np.where(
+    df['%Democrat'] >  df['%Republican'], 'Demo', 'Repub')) 
+'''
+
+df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
+
+#df.to_csv("merged_columns_added_renamed.csv")
+
+
 #########################
+# Remove unneeded columns then
 # Write the merged file to CSV
 #########################
+del df['GeoType']
+del df['Swing']
 df.to_csv(output_csv_filename, header=True)
 

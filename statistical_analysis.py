@@ -14,8 +14,13 @@ from statsmodels.formula.api import ols
 from statsmodels.graphics.gofplots import ProbPlot
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
+# WHEN JONATHAN IS USING:
+#longpath = r"/Users/jonathan/Documents/Documents - Jonathan’s MacBook Pro/MSDS UVA/CS 5010/Project/"
+# WHEN ELENA IS USING:
+longpath = ""
 
-df = pd.read_csv("merged.csv", index_col=0)
+input_file = longpath + "merged.csv"
+df = pd.read_csv(input_file, index_col=0)
 
 #Data Exploration
 
@@ -28,6 +33,8 @@ df = pd.read_csv("merged.csv", index_col=0)
 #comparing % who think global warming is happening vs
 #% who say a candidate's views on global warming are important to their vote
 
+# The following code was moved to the load/clean/merge script
+'''
 #adding column
 df['%Democrat'] = (df['democrat_votes'] / df['totalvotes']) * 100
 df['%Republican'] = (df['republican_votes'] / df['totalvotes']) * 100
@@ -41,6 +48,7 @@ df['Political_Affiliation'] = np.where(
 df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
 
 df.to_csv("merged_columns_added_renamed.csv")
+'''
 
 sns.set(style="darkgrid")
 
@@ -333,7 +341,7 @@ plt.show()
 #are worried?
 
 df.loc[:,['happening','worried']].corr() #default is pearson
-df.loc[:,['PopDensity','worried']].corr()
+df.loc[:,['PopDensity (pop/sq mi)','worried']].corr()
 
 #The correlation is 0.94919. This correlation is close to 1 which implies that the relationship
 #between those who think GW is happening and those who are worried
