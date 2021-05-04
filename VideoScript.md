@@ -43,15 +43,19 @@ Notice how there is a linear relationship between those who believe GW is happen
 ![Image of second scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/scatterplot_CC_PopDensity.png)
 
 # MAP
+## SLIDE: About the interactive Choropleth map
+
+*Anita:* We anticipated that an interactive map, built on the county-level data we collected would be an effective way for users to consume the amount of information we needed to convey, and it would provide an effective opportunity to compare the survey data with political insights across the country.  
+
+So, based on the statistical analysis, we decided on the most impactive data points, and created an interactive choropleth map that allows users to choose survey data and political affiliations in a single experience.
+
+It is available at https://climate-population.herokuapp.com/.  It takes about a minute or so to load, but once it is loaded, the interaction exhibits no lag.
+
+The choropleth map is built using Plotly Graph Objects, rendered as a Dash application, and deployed on Heroku for all to access.  We use a continuous development environment, where any change to the Github code immediately rebuilds and redeploys the application.
+
 ## SLIDE: Picture of the map
 
-*Anita:* An interactive map allows those curious about climate change to compare the attitudes of Americans across the country, in a single visualization.
-
-It is available at https://climate-population.herokuapp.com/
-
-The choropleth map is built using Plotly, rendered as a Dash application, and deployed on Heroku for all to access.
-
-The map expedites choosing a survey data point the user is interested in, and immediately renders a comparison of American's attitudes across the country, at the county level.  It also allows users to assess the current state of the country's thoughts about each data point.
+*Anita:* The map expedites choosing a survey data point the user is interested in, and immediately renders a comparison of American's attitudes across the country, at the county level.  It also allows users to assess the current state of the country's thoughts about each data point.
 
 Hovering over a location on the map provides: 
 *	The County name and State
@@ -59,7 +63,7 @@ Hovering over a location on the map provides:
 *	The *population density* of that county
 *	The number of votes for Democrats and Republicans in the 2016 election.  
 
-The selectable data points to _6 items_, in order to reduce the initial map loading time, which stands at about 1 minute.
+We implemented 5 selectable data points, in order to focus our story, and reduce the initial map loading time, which stands at about 1 minute.
 
 
 
