@@ -1,16 +1,22 @@
 # Intro and Data:
-## (SLIDE: Title and pictures of the 3 of us)
+## SLIDE: Title 
 *Jonathan:* Hello, our group looked at Americans’ attitudes toward Climate Change – specifically, whether those attitudes correlate with Population Density.  Our group members are Elena TsvetKOHva, Anita Taucher, and I’m Jonathan Shakes.
 
 ## SLIDE: YALE WEBSITE
 *Jonathan:* Some of our data comes from the Yale Program on Climate Change Communications. The Yale program does surveys with questions like, “Do you think climate change is happening,” or “Do you think your state's governor should do more about climate change?” 
 
-On top of the Yale data, we added census data about population density, to see if that relates to people’s climate change attitudes.
+On top of the Yale data...
 
-We also add election return data from the 2016 presidential race between Donald Trump and Hillary Clinton. We categorized each county as a Republican, Democratic, or Swing county. The I think the Yale program folks want to downplay the politics, because they didn't integrate political data with their dataset, even though the two are closely related. 
+## SLIDE: MULTIPLE DATA SOURCES
 
-## SLIDE: Side-by-side rows from two different data sets
-*Jonathan:* Before doing analysis, we merged the data at the county level. That should be easy, and there used to be a standard ID for counties called a FIPS code, but in 2008 the commerce department replaced that with another standard called INCITS, so our sources were inconsistent. It’s not practical to manually match 3000 counties, do we wrote python functions to translate between coding standards, then used a single coding standard as an index to combine five different data frames, one for each data source.
+...we added census data about population density, to see if that relates to people’s climate change attitudes.
+
+We also add election return data from the 2016 presidential race between Donald Trump and Hillary Clinton. That categorized each county as Republican or Democratic. We scraped another source for a list of Swing counties.  
+
+Before doing analysis, we merged these data sources at the county level. That should be easy, and there used to be a standard ID for counties called a FIPS code, but in 2008 the commerce department replaced that with another standard called INCITS, so our sources were inconsistent.
+
+## SLIDE: County conversion Python code
+*Jonathan:* It’s not practical to manually match 3000 counties, so we wrote python functions to translate between coding standards, then used a single coding standard as an index to combine five different data frames, one for each data source.
 
 
 # ANALYSIS
@@ -58,14 +64,23 @@ The selectable data points to _6 items_, in order to reduce the initial map load
 
 
 # TESTING 
-*Jonathan:* Most of our code for the project is in three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. Most of our testing was whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
+*Jonathan:* The code for our project is in three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. Most of our testing was whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
 
-# CONCLUSION 
-*Jonathan:* In conclusion, look at the biggest circles in this graphic.  Those are the counties with the highest population densities in the country.  It's commonly known that big cities vote Democratic, but this graph shows that big-city residents are also more worried about climate change than residents of typical counties who agree that climate change is happening.
+# CONCLUSION SLIDE 1
+*Jonathan:* This bar graph summarizes a key finding of our project. It's commonly known that cities tend to vote Democratic, and Democrats express more environmental concern than Repubicans, so it's no surprise to see that climate change attitudes differ along party lines.
+
+# CONCLUSION SLIDE 2
+
+What's more interesting is that regardless of whether a county votes Democratic or Republican, people in counties with higher population density express more concern about climate change. The light red and light blue bars are for sparsely populated counties, and you can see the concern gets bigger with the dark red and dark blue bars, which are for dense urban counties.
  
-This is an important observation, because all over the world, people are migrating towards cities, and when you live in a city, it's harder to stay in touch with the natural environment. It's possible that might mean people in cities will forget what they left behind.  It would take future work  to fully explore that hypothesis, but luckily this graph suggests it may actually be the opposite: it seems people in the city care *more* about protecting the environment than people in the countryside. We live in a democracy where more are more people are living in cities. So having city dwellers want to protect the environment will increase the odds that the US takes action to address climate change.
+This is important because all over the world, people are migrating into cities, and in a city, it's harder to stay in touch with the natural environment. It's possible that migration will mean people in cities forget what they left behind, and not care about environmental destruction.  We would need to do more work to explore a causal relationship, but this graph suggests an opposite hypothesis: people currently in the cities care *more* about protecting the environment than people in the countryside. 
 
-EDITS STILL NEEDED: we believe the implementation of an interactive dashboard as well as advance statistical queries that involved transforming response variables are worthy of extra credit"
-...and for swing county web scraping
+That's great news for a democracy where more are more people will live in cities. City dwellers who want to protect the environment will increase the odds that our country takes action to address climate change.
+
+# EXTRA CREDIT SLIDE
+
+That concludes our presentation, and MOST of our audience does NOT need to read this slide.
+
+
 
 
