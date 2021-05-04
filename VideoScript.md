@@ -11,9 +11,9 @@ On top of the Yale data...
 
 ...we added census data about population density, to see if that relates to people’s climate change attitudes.
 
-We also add election return data from the 2016 presidential race between Donald Trump and Hillary Clinton. That categorized each county as Republican or Democratic. We scraped another source for a list of Swing counties.  
+We also add election return data from the 2016 presidential race, to categorize each county as Republican or Democratic. We scraped a different website for a list of Swing counties.  
 
-Before doing analysis, we merged these data sources at the county level. That should be easy, and there used to be a standard ID for counties called a FIPS code, but in 2008 the commerce department replaced that with another standard called INCITS, so our sources were inconsistent.
+We merged these data sources at the county level. That should be easy, and there used to be a standard ID for counties called a FIPS code, but in 2008 the commerce department replaced that with another standard called INCITS, so our sources were inconsistent.
 
 ## SLIDE: County conversion Python code
 *Jonathan:* It’s not practical to manually match 3000 counties, so we wrote python functions to translate between coding standards, then used a single coding standard as an index to combine five different data frames, one for each data source.
@@ -71,7 +71,7 @@ We implemented 5 selectable data points, in order to focus our story, and reduce
 *Jonathan:* The code for our project is in three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. Most of our testing was whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
 
 # CONCLUSION SLIDE 1
-*Jonathan:* This bar graph summarizes a key finding of our project. It's commonly known that cities tend to vote Democratic, and Democrats express more environmental concern than Repubicans, so it's no surprise to see that climate change attitudes differ along party lines.
+*Jonathan:* This bar graph summarizes a key finding of our project. It's commonly known that cities tend to vote Democratic, and Democrats express more environmental concern at the voting booth than Repubicans, so it's no surprise to see that climate change attitudes differ along party lines.
 
 # CONCLUSION SLIDE 2
 
