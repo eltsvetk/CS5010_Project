@@ -65,7 +65,7 @@ Hovering over a location on the map provides:
 
 We implemented 5 selectable data points, in order to focus our story, and reduce the initial map loading time, which stands at about 1 minute.
 
-![Image of interactive map](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/InteractiveMap-ScreenShot.png)
+![Image of interactive map](https://github.com/eltsvetk/CS5010_Project/blob/main/interactive-map/InteractiveMap-ScreenShot.png)
 
 # TESTING 
 *Jonathan:* The code for our project is in three scripts. One script loads and cleans the data, a second script does the statistical analysis and data plots, and a third script does the interactive mapping. Most of our testing was whitebox testing, meaning we looked at each other's code, to make sure we understood it. 
