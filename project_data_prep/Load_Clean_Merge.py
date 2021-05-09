@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 
-Clean 4 sources of data for Project 1
+Clean sources of data for CS5010 Project 
+Climate Change Attitudes
 Merge them into a single dataframe
 Export that dataframe to CSV
 
@@ -11,7 +12,11 @@ Export that dataframe to CSV
 import numpy as np
 import pandas as pd
 
-longpath = r"/Users/jonathan/Documents/Documents - Jonathan’s MacBook Pro/MSDS UVA/CS 5010/Project/"
+#longpath = r"/Users/jonathan/Documents/Documents - Jonathan’s MacBook Pro/MSDS UVA/CS 5010/Project/"
+
+#be sure your working directory is referencing the top level of 
+# github repository CS5010_Project
+longpath = "project_data_prep/datasets/"
 
 # Source Data filenames
 Pres_filename = longpath + "county_pres.csv"  # Presidential vote by county
@@ -24,9 +29,10 @@ YCOM_filename = longpath + "YCOM_2020_Data.csv"   # Yale university polling data
 # They voted for Obama both times, then for Trump in 2016
 Swing_county_filename = longpath + "SwingCounties.csv"   
 
-
-
+# This is the file the rest of the project will use
+# for statistical analysis and mapping data:
 output_csv_filename = longpath + "merged.csv"
+
 
 # Routines to process the key geographic ID we'll use
 # To stitch together the 4 data sources
@@ -60,7 +66,7 @@ def isCountyID(id_string):
 
 
 #######################
-# Presidentail Results datasource
+# Presidential Results datasource
 #######################
 
 dfP =  pd.read_csv(Pres_filename)
@@ -97,13 +103,6 @@ dfP.rename(columns= {'Other':'other_votes','democrat':'democrat_votes','republic
 
 # republican (ie, Trump) percentage of total votes
 dfP['republican_pct'] = round(dfP['republican_votes'] / dfP['totalvotes'],4)
-
-# NO LONGER USED
-# Column to show "color" of voters -- red, blue, or purple
-# Based on arbitrary definition of 47.5% to 52.5% of Trump Voters
-# in 2016 election = Purple
-#dfP['vote_color'] = pd.cut(dfP.republican_pct,bins=[0,0.475,0.525,1],
-#                   labels=['blue','purple','red'])
 
 
 #######################
@@ -271,9 +270,8 @@ df['Political_Affiliation'] = df.apply(lambda
                                        row: label_party_color(row),
                                        axis = 1)
 
-df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
 
-#df.to_csv("merged_columns_added_renamed.csv")
+df.rename(columns = {'PopDensity': 'PopDensity (pop/sq mi)'}, inplace = True)
 
 
 #########################
