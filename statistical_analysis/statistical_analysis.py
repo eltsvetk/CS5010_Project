@@ -14,10 +14,9 @@ from statsmodels.formula.api import ols
 from statsmodels.graphics.gofplots import ProbPlot
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
-# WHEN JONATHAN IS USING:
-#longpath = r"/Users/jonathan/Documents/Documents - Jonathan’s MacBook Pro/MSDS UVA/CS 5010/Project/"
-# WHEN ELENA IS USING:
-longpath = ""
+#be sure your working directory is referencing the top level of github repository CS5010_Project
+
+longpath = "project_data_prep/datasets/"
 
 input_file = longpath + "merged.csv"
 df = pd.read_csv(input_file, index_col=0)
@@ -47,7 +46,7 @@ plt.xlabel("% who think GW is happening")
 plt.ylabel("%who priortize candidates views on GW")
 plt.title("%Who think GW is happening vs those who care")
 plt.tight_layout()
-plt.savefig('scatterplot_CC_Political_Affiliation.png', dpi=300)
+plt.savefig('statistical_analysis/images/scatterplot_CC_Political_Affiliation.png', dpi=300)
 plt.show()
 
 #There appears to be a linear relationship between the % of those who believe GW is happening
@@ -71,14 +70,14 @@ df.loc[:,['happening','priority']].corr() #default is pearson
 sns.set(style="darkgrid")
 sns.regplot(x='happening', y='priority', data=df, marker='+') #will provide a line of best fit as well
 plt.title("%Who think GW is happening vs Priority on GW")
-plt.savefig('regplot.png', dpi=300)
+plt.savefig('statistical_analysis/images/regplot.png', dpi=300)
 
 #Box plot  - %GW is happening
 sns.set(style="darkgrid")
 my_pal = {'Demo':'blue', 'Repub':'red', 'Swing':'green'}
 sns.boxplot(x=df['Political_Affiliation'],y=df['happening'],palette=my_pal)
 plt.title("GW is happening vs Political Affiliation")
-plt.savefig('boxplot1.png', dpi=300)
+plt.savefig('statistical_analysis/images/boxplot1.png', dpi=300)
 plt.show()
 
 #The average % of those who think GW is happening is highest for democratic counties when 
@@ -89,7 +88,7 @@ sns.set(style="darkgrid")
 my_pal = {'Demo':'blue', 'Repub':'red', 'Swing':'green'}
 sns.boxplot(x=df['Political_Affiliation'],y=df['priority'],palette=my_pal)
 plt.title("Candidate's views on GW is Priority vs Political Affiliation")
-plt.savefig('boxplot2.png', dpi=300)
+plt.savefig('statistical_analysis/images/boxplot2.png', dpi=300)
 plt.show()
 
 #The average % of those who prioritize their candidate's views on GW is highest for 
@@ -154,7 +153,7 @@ plot_resid.axes[0] = sns.residplot(x=model_fitted, y=model_residuals, data=df,
 plot_resid.axes[0].set_title('Residuals vs Fitted')
 plot_resid.axes[0].set_xlabel('Fitted values')
 plot_resid.axes[0].set_ylabel('Residuals');
-plt.savefig('residplot_beforeTrans.png', dpi=300)
+plt.savefig('statistical_analysis/images/residplot_beforeTrans.png', dpi=300)
 
 #the assumption for constant variance and residuals having mean 0 does not appear to be met
 #since both of these assumptions are violated, we will transform the y variable
@@ -175,7 +174,7 @@ plot_resid_2.axes[0] = sns.residplot(x=trans_model_fitted, y=trans_model_resid, 
 plot_resid_2.axes[0].set_title('Residuals vs Fitted')
 plot_resid_2.axes[0].set_xlabel('Fitted values')
 plot_resid_2.axes[0].set_ylabel('Residuals');
-plt.savefig('residplot_afterTrans.png', dpi=300)
+plt.savefig('statistical_analysis/images/residplot_afterTrans.png', dpi=300)
 
 #our assumption for residuals having mean 0 is met. Our assumptions for residuals having
 #constant is close to met!
@@ -190,7 +189,7 @@ plot_qq = qq.qqplot(line='45', alpha=0.5, color='#4C72B0', lw=1)
 plot_qq.axes[0].set_title('Normal Q-Q - After transforming')
 plot_qq.axes[0].set_xlabel('Theoretical Quantiles')
 plot_qq.axes[0].set_ylabel('Standardized Residuals');
-plt.savefig('QQplot_afterTrans.png', dpi=300)
+plt.savefig('statistical_analysis/images/QQplot_afterTrans.png', dpi=300)
 
 #normalized residuals - before transforming
 model_norm_resid_2 = model.get_influence().resid_studentized_internal
@@ -232,7 +231,7 @@ plot_lev.axes[0].set_ylim(-3, 5)
 plot_lev.axes[0].set_title('Residuals vs Leverage')
 plot_lev.axes[0].set_xlabel('Leverage')
 plot_lev.axes[0].set_ylabel('Standardized Residuals');
-plt.savefig('Cooksdistance_afterTrans.png', dpi=300)
+plt.savefig('statistical_analysis/images/Cooksdistance_afterTrans.png', dpi=300)
 
 #all of the Cook's distance measures for the data points are less than 0.5
 #no data points are influential
@@ -319,7 +318,7 @@ plt.xlabel("% who think GW is happening")
 plt.ylabel("%who are worried")
 plt.title("%Who think GW is happening vs those who are worried")
 plt.tight_layout()
-plt.savefig('scatterplot_CC_PopDensity.png', dpi=300)
+plt.savefig('statistical_analysis/images/scatterplot_CC_PopDensity.png', dpi=300)
 plt.show()
 
 #There appears to be a linear relationship between the % of those who believe GW is happening
@@ -375,7 +374,7 @@ plot_resid_pop.axes[0] = sns.residplot(x=model_fitted_pop, y=model_residuals_pop
 plot_resid_pop.axes[0].set_title('Residuals vs Fitted')
 plot_resid_pop.axes[0].set_xlabel('Fitted values')
 plot_resid_pop.axes[0].set_ylabel('Residuals');
-plt.savefig('residplot_popdens.png', dpi=300)
+plt.savefig('statistical_analysis/images/residplot_popdens.png', dpi=300)
 
 #the assumption for residuals having constant variance appears to be met
 #the assumption for residuals having mean zero appears to be met
@@ -389,7 +388,7 @@ plot_qq_pop = qq.qqplot(line='45', alpha=0.5, color='#4C72B0', lw=1)
 plot_qq_pop.axes[0].set_title('Normal Q-Q - After transforming')
 plot_qq_pop.axes[0].set_xlabel('Theoretical Quantiles')
 plot_qq_pop.axes[0].set_ylabel('Standardized Residuals');
-plt.savefig('QQplot_afterTrans.png', dpi=300)
+plt.savefig('statistical_analysis/images/QQplot_popdens.png', dpi=300)
 
 #normality assumption is met (residuals appear to follow a normal distribution)
 
