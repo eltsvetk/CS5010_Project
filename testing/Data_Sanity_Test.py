@@ -9,7 +9,9 @@ Confirm that Project Data is reasonable
 import numpy as np
 import pandas as pd
 
-longpath = r"/Users/jonathan/Documents/Documents - Jonathan’s MacBook Pro/MSDS UVA/CS 5010/Project/"
+#be sure your working directory is referencing the top level of github repository CS5010_Project
+
+longpath = "project_data_prep/datasets/"
 
 input_csv_filename = longpath + "merged.csv"
 
