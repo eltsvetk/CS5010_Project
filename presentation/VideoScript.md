@@ -26,7 +26,7 @@ We merged these data sources at the county level. That should be easy, and there
 
 From the scatterplot, you can see there is a linear relationship between those who believe GW is happening and those who prioritize candidate's views on GW. It is also interesting how there is a clear divide between those who voted democrat vs republican in the 2016 election.  
 
-![Image of first scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/scatterplot_CC_Political_Affiliation.png)
+![Image of first scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/statistical_analysis/images/scatterplot_CC_Political_Affiliation.png)
 
 Notice these boxplots. You can see that the average % of those who think GW is happening and those who prioritize candidate’s views on GW is highest for democratic counties.
 
