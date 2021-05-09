@@ -74,6 +74,10 @@ if 'Political_Affiliation' in options_list:
     party = {'Repub': 10, 'Demo': 0, 'Swing': 5}
     df['Political_Affiliation'].replace(party, inplace=True)
 
+## We need zero instead of NaN for vote values
+df['republican_votes'] = df['republican_votes'].fillna(0)
+df['democrat_votes'] = df['democrat_votes'].fillna(0)
+
 ## Save some memory by eliminating what we don't need
 dropme = []
 for bigdrop in df.columns:  
@@ -170,3 +174,4 @@ app.layout = html.Div(children=[
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
