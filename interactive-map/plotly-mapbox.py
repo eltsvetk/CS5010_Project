@@ -15,12 +15,12 @@ import pandas as pd
 import numpy as np
 
 ## Read our data set from github
-df = pd.read_csv("https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/merged.csv",dtype={"Unnamed: 0": str})
+df = pd.read_csv("https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/project_data_prep/datasets/merged.csv",dtype={"Unnamed: 0": str})
 df.rename(columns = {"Unnamed: 0": "fips"}, inplace=True)
 
 ## Set up a dataframe with column descriptions
 ## This is used to display subtitles on the map
-subtitles = pd.read_csv("https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/YCOM_2020_Metadata.csv", index_col=0)
+subtitles = pd.read_csv("https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/project_data_prep/datasets/YCOM_2020_Metadata.csv", index_col=0)
 
 ## Add Population Density Description to the original metadata
 ## This was added to the Yale Data.
