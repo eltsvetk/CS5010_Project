@@ -30,9 +30,9 @@ From the scatterplot, you can see there is a linear relationship between those w
 
 Notice these boxplots. You can see that the average % of those who think GW is happening and those who prioritize candidate’s views on GW is highest for democratic counties.
 
-![Image of first boxplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/boxplot1.png)
+![Image of first boxplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/statistical_analysis/images/boxplot1.png)
 
-![Image of second boxplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/boxplot2.png)
+![Image of second boxplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/statistical_analysis/images/boxplot2.png)
 
 But we wanted to dive deeper. We wanted to understand the relationship between these variables. So, I utilized the statsmodels library in python. I fit a model where 87% of the variability in those who prioritize candidate’s views on GW was captured. I did have to log transform the response to ensure the assumptions for a multiple regression model were met. In the end, I found that those who prioritize candidate’s views on GW decreases on average by about 3.4% per change in those who think GW is happening if they voted Republican in the 2016 election instead of voting Democrat. 
 
@@ -40,7 +40,7 @@ Our second question was: Are the people who think GW is happening actually worri
 
 Notice how there is a linear relationship between those who believe GW is happening and those who are worried. Notice how the population density increases as those who think GW is happening and are worried increases. I fit another model where 90% of the variability in those who are worried about GW was captured. We found that .0002% is the expect change in those who are worried per unit change in the population density when those who believe GW is happening is held constant. 
 
-![Image of second scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/scatterplot_CC_PopDensity.png)
+![Image of second scatterplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/statistical_analysis/images/scatterplot_CC_PopDensity.png)
 
 # MAP
 ## SLIDE: About the interactive Choropleth map
