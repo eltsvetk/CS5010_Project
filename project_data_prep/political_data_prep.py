@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Data prep for project 
+Politcal data prep for project 
 
 """
 
 import pandas as pd
 
-df =  pd.read_csv("county_pres.csv")
+#be sure your working directory is referencing the top level of github repository CS5010_Project
+
+longpath = "project_data_prep/datasets/"
+
+input_file = longpath + "county_pres.csv"
+
+df =  pd.read_csv(input_file)
 
 #filter to just 2016 presidential election
 df_year_2016 = df.loc[df["year"]== 2016,:]
