@@ -10,21 +10,21 @@ We set out to answer a hypothesis: climate-change-related attitudes in cities wi
 To study this topic, we needed public-opinion data about environmental data, with a distinction between people living in city and rural areas.
 
 ## THE DATA
-Prior to beginning studies at UVA, Jonathan learned about climate-change-related survey data during volunteer work he did with Citizens’ Climate Lobby (CCL) (Note 1). Anita and Elena shared Jonathan’s interest in the general topic. CCL uses the survey data as part of its grass-roots mobilization within the US. Understanding what voters believe about climate change policy is an important piece of data to inform effective grass-roots advocacy.
+Prior to beginning studies at UVA, Jonathan learned about climate-change-related survey data during volunteer work he did with Citizens’ Climate Lobby (CCL)<sup>[1](#Note1)</sup>. Anita and Elena shared Jonathan’s interest in the general topic. CCL uses the survey data as part of its grass-roots mobilization within the US. Understanding what voters believe about climate change policy is an important piece of data to inform effective grass-roots advocacy.
 
-Our core data set comes from the Yale Program on Climate Change Communications (Notes 2, 3). The Yale data contains multi-year results from surveys in the U.S.. Our data file from Yale consists of about 5000 rows, each corresponding to a geographic area, and several dozen columns with responses to questions like, “Do you think climate change is happening,” or “Do you think your state's governor should do more about climate change?”  These surveys were administered from 2018 to 2020. The sample size is large enough to support results broken out at the level of U.S. counties and congressional districts, opening the possibility for us to do map-based geographic analysis.
+Our core data set comes from the Yale Program on Climate Change Communications<sup>[2](#Note2)</sup> <sup>[3](#Note3)</sup>. The Yale data contains multi-year results from surveys in the U.S.. Our data file from Yale consists of about 5000 rows, each corresponding to a geographic area, and several dozen columns with responses to questions like, “Do you think climate change is happening,” or “Do you think your state's governor should do more about climate change?”  These surveys were administered from 2018 to 2020. The sample size is large enough to support results broken out at the level of U.S. counties and congressional districts, opening the possibility for us to do map-based geographic analysis.
 
-We decided that looking at the data through the lens of the urban/rural divide, using population density as a numeric indicator, might add value to this existing data set.  In an FAQ for the dataset, we discovered that the data’s relation with population density is both of general interest and not something that has been done before (Note 4).  The potential to look at less-traveled territory made our project more interesting to us, even though we’re realistic enough to understand that our class project is unlikely to break serious new ground, from an academic perspective.
+We decided that looking at the data through the lens of the urban/rural divide, using population density as a numeric indicator, might add value to this existing data set.  In an FAQ for the dataset, we discovered that the data’s relation with population density is both of general interest and not something that has been done before<sup>[4](#Note4)</sup>.  The potential to look at less-traveled territory made our project more interesting to us, even though we’re realistic enough to understand that our class project is unlikely to break serious new ground, from an academic perspective.
 
 The survey data was limited to the US. While the climate change problem is a global one,  the data was so valuable and relevant that we decided to center our work on it.
 
 At the finest level of detail, the Yale data is split by county and congressional district.  We chose to focus on county, not congressional district, because there are nearly six times as many counties as congressional districts, and therefore our maps might show finer gradations in degree as population density drops in correlation with the distance from the densest cities.
 
-The population and land-area at the county-level were each obtained in separate files from the US Census Bureau (Notes 5, 6).  By matching these two files together, dividing population by land area, we calculated the population density per square mile of land for each county or county-equivalent geographic portion of the U.S.. 
+The population and land-area at the county-level were each obtained in separate files from the US Census Bureau<sup>[5](#Note5)</sup> <sup>[6](#Note6)</sup>.  By matching these two files together, dividing population by land area, we calculated the population density per square mile of land for each county or county-equivalent geographic portion of the U.S.. 
 
-We also assembled the 2016 presidential election returns for each county in the US from the Election Lab at MIT (Note 7). By looking at the vote totals in each county, we could categorize each county as Republican or Democratic. That was an important step for our study, because political preferences are commonly known to be linked to climate change attitudes. Political data was not included in the Yale dataset, but it helped us determine whether population density had any significant correlation with climate-change attitudes, beyond what political preferences alone would predict.
+We also assembled the 2016 presidential election returns for each county in the US from the Election Lab at MIT<sup>[7](#Note7)</sup>. By looking at the vote totals in each county, we could categorize each county as Republican or Democratic. That was an important step for our study, because political preferences are commonly known to be linked to climate change attitudes. Political data was not included in the Yale dataset, but it helped us determine whether population density had any significant correlation with climate-change attitudes, beyond what political preferences alone would predict.
 
-Finally we scraped yet another web data source, Ballotpedia, to identify a list of 206 “swing counties” in the US where a majority of voters voted for Obama in 2008 and 2012, then swung Republican in 2016, voting for Donald Trump (Note 8).  The entire list of swing counties was visible on a single web page, so scraping was a simple matter of identifying the correct chunk of HTML and then removing the extraneous tags and data.  Note: This portion of our work went beyond the basic requirements of the project.
+Finally we scraped yet another web data source, Ballotpedia, to identify a list of 206 “swing counties” in the US where a majority of voters voted for Obama in 2008 and 2012, then swung Republican in 2016, voting for Donald Trump<sup>[8](#Note8)</sup>.  The entire list of swing counties was visible on a single web page, so scraping was a simple matter of identifying the correct chunk of HTML and then removing the extraneous tags and data.  Note: This portion of our work went beyond the basic requirements of the project.
 
 ## EXPERIMENTAL DESIGN
 ### Data Preparation
@@ -113,6 +113,102 @@ As noted in the experimental design, the assumptions for a linear regression mod
 Interpretation of the population density coefficient (.0002):
 
 .0002% is the expected change in the percentage of those who are worried per unit change in the population per sq mi (population density) when the percentage of those who think global warming is happening is held constant.
+
+## Mapping
+Based on the statistical analysis, we anticipated that an interactive map of the country, built on the county-level data would be an effective way to communicate results to our audience.
+
+Using plotly, we built a choropleth from county-level geojson data, imported from plotly’s github content repository.  We experimented with map features, such as using colors and the hover box to convey the story, and quickly came to the decision that we wanted the users to choose map content from a list of possibilities that support the climate change questions that we investigated in this project. This would also require users to have the ability to access the map on the web, as opposed to downloading code to their local machine.
+
+As a result, we chose a combination of survey and political data to drive the map content.
+
+![Image of Map with List](https://github.com/eltsvetk/CS5010_Project/raw/main/interactive-map/MapShowingExpandedList.png)
+
+In the hover box, which is one of the core implements for comparing data across the map, we decided to show similar values for all counties, in addition to the value selected by the user.  In the example below, the user has selected “This is happening”, which is displayed on the right.  On the left, the user can see the items we felt were key to the drawing conclusions on the hypothesis:  County Name, Population Density, and Political information.
+
+![Image of Map Hover Box](https://github.com/eltsvetk/CS5010_Project/raw/main/interactive-map/MapHoverBox.png)
+
+We implemented the map as a Dash application, deployed on heroku, for general web access:  
+
+https://climate-population.herokuapp.com
+
+Heroku provides limited resources for free.  We found that implementing about 6 items, driving 6 different content maps, takes about 1 minute to load.  We considered 1 minute to be our maximum threshold for waiting on a result.  In the code, we reduced the number of columns in the dataset, so that we were working with only the specific data we needed, in order to save resources.
+
+## TESTING
+For the Python coding portion of this project, we wrote scripts to 
+
+* Convert a specific set of data files into a merged data file,
+* Perform statistical analysis on the merged data, and
+* Create relevant maps and charts.
+
+The scripts had a few helper functions, but nothing with complex logic that would benefit from the object-oriented features of Python. Since the scripts are for one-time use, rather than being designed to handle a wide variety of unpredictable scenarios, formal specification and unit testing seemed not applicable, as long as the data we generated itself was accurate.
+
+As a result, our "testing" script was focused on the data itself (Note 9).  As we transformed and merged the data sets, we used tests to confirm, for example, that
+
+* The total population in our main merged data frame roughly matches the population of the United States
+* The total land area roughly matches
+* The number of voters for Clinton and Trump in 2016 aligns with an independent source for this aggregate data
+* We didn’t have duplicate data in columns where duplicates were not expected.
+
+We also tested each other’s code by reviewing it and confirming that we understood it and that it works as intended. 
+
+## CONCLUSION - WHAT WE LEARNED ABOUT THE DATA
+The following bar graph summarizes a key finding of our project. It's commonly known that cities tend to vote Democratic, and Democrats express more environmental concern at the voting booth than Republicans, so it's no surprise to see that climate change attitudes differ along party lines.
+
+What's more interesting is that regardless of whether a county votes Democratic or Republican, people in counties with higher population density express more concern about climate change. 
+
+![Image of Concluding Barplot](https://raw.githubusercontent.com/eltsvetk/CS5010_Project/main/statistical_analysis/images/BarGraphWithDensityEffect.png) 
+
+Before we started the project, we wondered if migration will mean people in cities forget what they left behind, and not care about environmental destruction. This graph suggests an opposite hypothesis: people currently in the cities care more about protecting the environment than people in the countryside.
+
+Before we can say there is no cause for worry, additional work is needed to explore whether a causal relationship exists.  To do that, we would need to look at people’s attitudes over time, or find a way to measure the recency of people’s transition into an urban environment.  We would also control for other variables that we haven’t yet controlled for, for example income, education, and depth of party loyalty in each county.
+
+It’s also worth examining why the gap between low-density and high-density counties for each response category is so predictably consistent.  
+From the map we learned, when choosing the list items, consecutively from first to third:  
+
+1. People generally agree that Climate Change is happening.  The map is a brighter yellow color to indicate the agreement.
+2. People are somewhat worried about Climate Change.  The map is a little bit darker than the first selection, indicating that people do not agree as strongly that they are worried.
+3. Voting Priority shows a generally darkened map.  This indicates that people are generally not voting for candidates based on this particular issue.
+
+The progression of the map from lighter to darker on these items, that even if people agree it is happening, and even though some are concerned, people are generally not voting for political candidates based on Climate Change.
+
+## CONCLUSION - WHAT WE LEARNED ABOUT DATA SCIENCE
+In addition to learning a bit about climate change attitudes in the U.S., the three of us accomplished several first-ever’s for this project.  It was our first time to...
+
+* Write scripts to clean and merge real-world data from disparate sources
+* Use Python for statistical analysis and predictive modeling 
+* Use geojson data to build a choropleth map
+* Use Dash to create a web application
+* Use Heroku to deploy an interactive map as part of a website
+* Use Python for something beyond a class assignment
+* Use GitHub commands such as pull, commit, add and push, for truly managing code being updated by multiple people
+
+## BEYOND THE ORIGINAL SPECIFICATIONS
+To summarize what are team did beyond the original specifications
+
+1. Web-scraped swing county data
+2. Built statistical models along with transformed response variable to improve predictive ability of one of our statistical models
+3. Built interactive map that was incorporated into a website
+
+## FOOTNOTES
+
+<a name="Note1">Note 1</a>: CCL is a non-partisan, volunteer-driven organization that works to ensure our planet remains livable through the adoption of fair, effective, and sustainable climate change solutions.
+
+<a name="Note2">Note 2</a>:  https://climatecommunication.yale.edu/
+
+<a name="Note3">Note 3</a>: Howe, P., Mildenberger, M., Marlon, J., & Leiserowitz, A. (2015) “Geographic variation in opinions on climate change at state and local scales in the USA,” Nature Climate Change. DOI: 10.1038/nclimate2583.
+
+<a name="Note4">Note 4</a>: https://climatecommunication.yale.edu/visualizations-data/ycom-us/
+
+<a name="Note5">Note 5</a>: US Census, Annual Estimates of the Resident Population for Counties: April 1, 2010 to July 1, 2019
+
+<a name="Note6">Note 6</a>: https://www.census.gov/library/publications/2011/compendia/usa-counties-2011.html#LND
+
+<a name="Note7">Note 7</a>: https://electionlab.mit.edu/data
+
+<a name="Note8">Note 8</a>: https://ballotpedia.org/Pivot_Counties_by_state
+
+
+
 
 
 
