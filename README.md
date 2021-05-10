@@ -4,9 +4,9 @@ Guide to the most important files and data
 **Python Files**
 * [project_data_prep/Load_Clean_Merge.py](https://github.com/eltsvetk/CS5010_Project/blob/main/project_data_prep/Load_Clean_Merge.py) loads and cleans the data
 * [project_data_prep/political_data_prep.py](https://github.com/eltsvetk/CS5010_Project/blob/main/project_data_prep/political_data_prep.py) adds political data layer
-* [statistical_analysis/statistical_analysis.py](https://github.com/eltsvetk/CS5010_Project/blob/main/statistical_analysis/statistical_analysis.py) does the statistical analysis and data plots, 
-* [interactive-map/plotly-mapbox.py](https://github.com/eltsvetk/CS5010_Project/blob/main/interactive-map/plotly-mapbox.py) does the interactive mapping
-* [testing/Data_Sanity_Test.py](https://github.com/eltsvetk/CS5010_Project/blob/main/testing/Data_Sanity_Test.py) sanity tests that our merged data is not way off
+* [statistical_analysis/statistical_analysis.py](https://github.com/eltsvetk/CS5010_Project/blob/main/statistical_analysis/statistical_analysis.py) does the statistical analysis and data plots
+* [interactive-map/plotly-mapbox.py](https://github.com/eltsvetk/CS5010_Project/blob/main/interactive-map/plotly-mapbox.py) does the interactive mapping or you can use the .ipynb (Notebook version)
+* [testing/Data_Sanity_Test.py](https://github.com/eltsvetk/CS5010_Project/blob/main/testing/Data_Sanity_Test.py) sanity tests that our merged data worked as intended
 * [presentation/DensityBarGraph.py](https://github.com/eltsvetk/CS5010_Project/blob/main/presentation/DensityBarGraph.py) generates the conclusory bar graph
 
 **Main, Cleaned Data File**
