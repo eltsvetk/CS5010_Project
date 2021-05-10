@@ -142,7 +142,7 @@ For the Python coding portion of this project, we wrote scripts to
 
 The scripts had a few helper functions, but nothing with complex logic that would benefit from the object-oriented features of Python. Since the scripts are for one-time use, rather than being designed to handle a wide variety of unpredictable scenarios, formal specification and unit testing seemed not applicable, as long as the data we generated itself was accurate.
 
-As a result, our "testing" script was focused on the data itself (Note 9).  As we transformed and merged the data sets, we used tests to confirm, for example, that
+As a result, our "testing" script was focused on the data itself<sup>[9](#Note9)</sup>.  As we transformed and merged the data sets, we used tests to confirm, for example, that
 
 * The total population in our main merged data frame roughly matches the population of the United States
 * The total land area roughly matches
@@ -206,6 +206,8 @@ To summarize what are team did beyond the original specifications
 <a name="Note7">Note 7</a>: https://electionlab.mit.edu/data
 
 <a name="Note8">Note 8</a>: https://ballotpedia.org/Pivot_Counties_by_state
+
+<a name="Note9">Note 9</a>: https://github.com/eltsvetk/CS5010_Project/blob/main/testing/Data_Sanity_Test.py
 
 
 
